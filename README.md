@@ -13,7 +13,7 @@ input <- input %>% rename('Date' = 1, 'Invoice' = 2, 'Code' = 3, 'Name' = 4, 'Km
 ```
 
 # Clear data
-Loại bỏ các dòng, cột nằm ngoài phạm vi quan tâm
+Loại bỏ các dòng, cột nằm ngoài phạm vi quan tâm, xử lý trường hợp dữ liệu rỗng
 ```
 # Loại các sản phẩm không quan tâm
 source <- input %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH07|TW25', Code))
@@ -22,8 +22,12 @@ source <- source $>$ select(Date, Code, Name, Customer, Type, Quantity, Revenue,
 ```
 
 # Analysis
-
+Phân tích mô tả
+So sánh
+Dự báo
 
 # Export
+Xuất kết quả phân tích ra file định dạng xlsx
 library(writexl)
+
 write_xlsx(result, 'output'xlsx')
