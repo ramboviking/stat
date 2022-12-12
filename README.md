@@ -9,21 +9,17 @@ library(readxl)
 input <- read_excel(input, "export.xlsx")
 
 library(dplyr)
-input <- input %>% 
-  rename('date' = 1, 
-         'invoice' = 2, 
-         'code' = 3, 
-         'name' = 4, 
-         'Promotion' = 5, 
-         'unit' = 6, 
-         'quantity' =  7, 
-         'price' = 8, 
-         'tax' = 9, 
-         'sale' = 10)
 
-# or
-input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4))
+# rename column
+input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'promotion' = 5, 'unit' = 6, 'quantity' = 7, 'raw_price' = 8, 'discount' = 9,
+  'price' = 10, 'before_tax' = 11, 'tax' = 12, 'sale' = 13, 'customer_code' = 14, 'customer_name' = 15, 'note' = 16, 'herbal_type' = 17, 'chem_type' = 18, 
+  'rep_code' = 19, 'rep_name' = 20, 'province' = 33, 'district' = 34, 'ward' = 35, 'lot' = 39, 'address' = 40, 'brand_code' = 44))
 ```
+
+# select data
+data <- select(input, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, herbal_type, rep_code, rep_name, province, brand_code))
+
+
 
 # Clear data
 Loại bỏ các dòng, cột nằm ngoài phạm vi quan tâm, xử lý trường hợp dữ liệu rỗng
@@ -36,7 +32,7 @@ source <- source $>$ select(Date, Code, Name, Customer, Type, Quantity, Revenue,
 
 ```
 # Transform
-muate(input, month(date))
+mutate(input, month(date))
 ```
 
 # Analysis
