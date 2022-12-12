@@ -54,13 +54,15 @@ data <- merge(data, brand, by = 'brand_code', all.x = TRUE)
 # Analysis
 ## Phân tích mô tả
 ## Group
+```
 sale.brand <- data %>% group_by(brand_name) %>% summarise(brand = sum(sale))
 sale.province <- data %>% group_by(province) %>% summarise(provice = sum(sale))
 sale.rep <- data %>% group_by(brand_name, rep_code) %>% summarise(sale = sum(sale))
 sale.month <- data %>% group_by(month) %>% summarise(sale = sum(sale))
-
+```
 
 ## So sánh
+
 ## Dự báo
 
 # Export
