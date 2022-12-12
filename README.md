@@ -21,7 +21,8 @@ input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'pro
 
 
 # select working data
-source <- select(input, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, herbal_type, rep_code, rep_name, province, brand_code))
+source <- select(input, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, 
+  herbal_type, rep_code, rep_name, province, brand_code))
 ```
 
 
