@@ -21,7 +21,7 @@ input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'pro
 
 
 # select working data
-data <- select(input, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, herbal_type, rep_code, rep_name, province, brand_code))
+source <- select(input, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, herbal_type, rep_code, rep_name, province, brand_code))
 ```
 
 
@@ -30,9 +30,9 @@ Loại bỏ các dòng, cột nằm ngoài phạm vi quan tâm, xử lý trườ
 
 ```
 # Loại các sản phẩm không quan tâm
-source <- input %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH07|TW25', Code))
+data <- source %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH07|TW25', Code))
 # Chọn các cột
-source <- source $>$ select(Date, Code, Name, Customer, Type, Quantity, Revenue, Brand)
+data <- source $>$ select(Date, Code, Name, Customer, Type, Quantity, Revenue, Brand)
 ```
 
 ```
@@ -46,6 +46,8 @@ name <- c('Công ty', 'CN Hà Nội', 'CN Hà Nội', 'CN Hồ Chí Minh', 'CN H
   'CN Hồ Chí Minh', 'CN Hồ Chí Minh', 'CN Miền Đông', 'CN Vũng Tàu', 'CN Cần Thơ', 'CN Tiền Giang', 
   'CN Nha Trang', 'CN Đà Nẵng', 'CN Nghệ An')
 brand <- data.frame(code, name)
+
+data <- merge(data, brand, by = 'brand_code', all.x = TRUE)
 ```
 
 # Analysis
