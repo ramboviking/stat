@@ -16,13 +16,15 @@ input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'pro
   'rep_code' = 19, 'rep_name' = 20, 'province' = 33, 'district' = 34, 'ward' = 35, 'lot' = 39, 'address' = 40, 'brand_code' = 44))
 ```
 
+```
 # select data
 data <- select(input, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, herbal_type, rep_code, rep_name, province, brand_code))
-
+```
 
 
 # Clear data
 Loại bỏ các dòng, cột nằm ngoài phạm vi quan tâm, xử lý trường hợp dữ liệu rỗng
+
 ```
 # Loại các sản phẩm không quan tâm
 source <- input %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH07|TW25', Code))
