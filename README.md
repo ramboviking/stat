@@ -67,4 +67,11 @@ sale.month <- data %>% group_by(month) %>% summarise(sale = sum(sale))
 Xuất kết quả phân tích ra file định dạng xlsx
 library(writexl)
 
+```
+# One sheet
 write_xlsx(result, 'output'xlsx')
+
+# Multiple sheet
+sheet <- list(sale.brand, sale.rep, sale.province)
+write_xlsx(sheet, 'multiple.xlsx')
+```
