@@ -9,7 +9,20 @@ library(readxl)
 input <- read_excel(input, "export.xlsx")
 
 library(dplyr)
-input <- input %>% rename('Date' = 1, 'Invoice' = 2, 'Code' = 3, 'Name' = 4, 'Km' = 5, 'Unit' = 6, 'Quantity' =  7, 'Price' = 8, 'Tax' = 9, 'Revenue' = 10)
+input <- input %>% 
+  rename('date' = 1, 
+         'invoice' = 2, 
+         'code' = 3, 
+         'name' = 4, 
+         'Promotion' = 5, 
+         'unit' = 6, 
+         'quantity' =  7, 
+         'price' = 8, 
+         'tax' = 9, 
+         'sale' = 10)
+
+# or
+input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4))
 ```
 
 # Clear data
@@ -19,6 +32,11 @@ Loại bỏ các dòng, cột nằm ngoài phạm vi quan tâm, xử lý trườ
 source <- input %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH07|TW25', Code))
 # Chọn các cột
 source <- source $>$ select(Date, Code, Name, Customer, Type, Quantity, Revenue, Brand)
+```
+
+```
+# Transform
+muate(input, month(date))
 ```
 
 # Analysis
