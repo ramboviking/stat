@@ -37,7 +37,8 @@ data <- source $>$ select(Date, Code, Name, Customer, Type, Quantity, Revenue, B
 
 ```
 # Transform
-mutate(input, month(date))
+data <- mutate(data, moth = month(date))
+data <- mutate(data, week = week(date))
 
 # merge brand data
 code <- c('1N101', '2B101-01', '2B101-02', '2N101', '2N101-01', '2N101-03', '2N101-04', '2N101-05', 
@@ -51,9 +52,16 @@ data <- merge(data, brand, by = 'brand_code', all.x = TRUE)
 ```
 
 # Analysis
-Phân tích mô tả
-So sánh
-Dự báo
+## Phân tích mô tả
+## Group
+sale.brand <- data %>% group_by(brand_name) %>% summarise(brand = sum(sale))
+sale.province <- data %>% group_by(province) %>% summarise(provice = sum(sale))
+sale.rep <- data %>% group_by(brand_name, rep_code) %>% summarise(sale = sum(sale))
+sale.month <- data %>% group_by(month) %>% summarise(sale = sum(sale))
+
+
+## So sánh
+## Dự báo
 
 # Export
 Xuất kết quả phân tích ra file định dạng xlsx
