@@ -71,7 +71,8 @@ Add percent column
 sale.month$percent <- sale.month$sale/ sum(sale.month$sale) * 100
 
 Arrange by percent column
-arrange(sale.month, sale.month$sale)
+arrange(sale.month, sale)
+arrange(sale.month, desc(sale))
 
 Add cumulate column
 sale.month$acc <- cumsum(sale.month$percent)
