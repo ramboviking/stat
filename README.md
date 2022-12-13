@@ -8,6 +8,7 @@ getwd()
 library(readxl)
 library(writexl)
 library(dplyr)
+library(lubridate)
 input <- read_excel(input, "export.xlsx")
 
 # Append data frames with the same column
@@ -57,6 +58,8 @@ name <- c('Công ty', 'CN Hà Nội', 'CN Hà Nội', 'CN Hồ Chí Minh', 'CN H
   'CN Hồ Chí Minh', 'CN Hồ Chí Minh', 'CN Miền Đông', 'CN Vũng Tàu', 'CN Cần Thơ', 'CN Tiền Giang', 
   'CN Nha Trang', 'CN Đà Nẵng', 'CN Nghệ An')
 brand <- data.frame(code, name)
+Or import from file
+brand <- read_excel("refer.xslx", "brand")
 
 data <- merge(data, brand, by = 'brand_code', all.x = TRUE)
 ```
