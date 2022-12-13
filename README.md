@@ -66,6 +66,15 @@ sale.brand <- data %>% group_by(brand_name) %>% summarise(brand = sum(sale))
 sale.province <- data %>% group_by(province) %>% summarise(provice = sum(sale))
 sale.rep <- data %>% group_by(brand_name, rep_code) %>% summarise(sale = sum(sale))
 sale.month <- data %>% group_by(month) %>% summarise(sale = sum(sale))
+
+Add percent column
+sale.month$percent <- sale.month$sale/ sum(sale.month$sale) * 100
+
+Arrange by percent column
+arrange(sale.month, sale.month$sale)
+
+Add cumulate column
+sale.month$acc <- cumsum(sale.month$percent)
 ```
 
 ## So sánh
