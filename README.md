@@ -31,7 +31,13 @@ Loại bỏ các dòng, cột nằm ngoài phạm vi quan tâm, xử lý trườ
 
 ```
 # Loại các sản phẩm không quan tâm
-data <- source %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH07|TW25', Code))
+- Chọn 3 gam (OPC, HD2, OPC BD)
+data <- source %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06', code))
+- Chọn 4 gam (OPC, HD2, OPC BD, TW25)
+data <- source %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|HH25', code))
+- Chọn 7 gam (OPC, HD2, OPC BD, TW25, thuốc phiến, QTSK, gia công)
+data <- source %>% filter(grepl('TP01|TP02|TP03|TP05|TP07|TP08|TP09|TP10|HH04|HH06|HH25', code))
+
 # Chọn các cột
 data <- source $>$ select(Date, Code, Name, Customer, Type, Quantity, Revenue, Brand)
 ```
