@@ -6,9 +6,12 @@ Cài dặt môi trường, load dữ liệu
 getwd()
 
 library(readxl)
+library(writexl)
+library(dplyr)
 input <- read_excel(input, "export.xlsx")
 
-library(dplyr)
+# Append data frames with the same column
+input <- rbin(input1, input2)
 
 # rename input column
 input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'promotion' = 5, 'unit' = 6, 'quantity' = 7, 
