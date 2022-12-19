@@ -23,6 +23,18 @@ Một số chỉ số khác
 - Chart: xuất dữ liệu dưới dạng biểu đồ.
 - Report: xuất hỗn hợp nhiều số liệu dưới dạng dòng/ bảng/ biểu đồ.
 
+## Term
+Các thuật ngữ được sử dụng chung trong phân tích kinh doanh của bất kỳ ngành nghề nào.
+- YTD (Year To Date): thời điểm từ ngày đầu năm đến ngày hôm nay.
+- MTD (Month To Date): tương tự YTD nhưng tính từ đầu tháng.
+- ACC (Accumulated): tích lũy, cộng dồn từ dòng đầu tiên đến dòng hiện tại của một cột trong bảng dữ liệu.
+- CUM (Cumualated); tích lũy giống hệt ACC chỉ là một cách viết khác thôi.
+- TTM (Trailing 12 Months): 12 tháng gần nhất (không tính tháng hiện tại).
+- PY (Previous Year): cùng kỳ năm ngoái
+- YOY (Year Over Year): tỷ lệ phần trăm cùng kỳ năm ngoái.
+- Growth: tỷ lệ tăng trưởng so với cùng kỳ, thể hiện bằng tỷ lệ phần trăm.
+- Proportion: tỷ trọng của từng phần so với tổng thể (tỷ trọng doanh thu miền Nam, tỷ trọng doanh thu CN HCM...)
+
 # Quy định
 ## Gam
 Khái niệm gam hàng được hiểu thống nhất như sau.
