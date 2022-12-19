@@ -71,8 +71,35 @@ data <- merge(data, brand, by = 'brand_code', all.x = TRUE)
 ```
 
 # 4. Analysis
-Phân tích các chỉ số kinh doanh theo [quy ước tại đây](./metric.md)
-## Phân tích mô tả
+Phân tích các chỉ số kinh doanh theo [quy ước tại đây.](./metric.md)
+
+## 4.1 Phân tích mô tả
+Thống kê mô tả (Descriptive statistics) sử dụng các phép thống kê tóm tắt để mô tả đặc trưng của dữ liệu. Bao gồm:
+- Tần số: số lần xuất hiện của từng giá trị.
+- Đo lường xu hướng trung tâm: median, mode, mean.
+- Xem hình dạng phân phối: biểu đồ histogram, kiểm tra độ lệch (skewness) và độ nhọn (kurtosis).
+- Đo lường sự phân tán: range, tứ phân vị (inter-quartile range), phương sai, độ lệch chuẩn.
+
+Phân tích mô tả ngoài mục đích giúp hiểu biết cơ bản về dữ liệu còn có ứng dụng hỗ trợ làm sạch dữ liệu. Chẳng hạn dữ liệu kinh doanh chỉ có 3 khoản mục (payment_cat) là P27*, P84* và P87* nhưng khi thống kê tần số sẽ phát hiện ra rất nhiều dòng rỗng (null) và không xác định (n/a). Khuyến khích nên thực hiện phân tích mô tả đối với tất cả các trường dữ liệu dự định thực hiện phân tích gộp dữ liệu để hạn chế sai xót.
+
+### Hàm cơ bản
+R đã hỗ trợ sẵn các hàm sau đây để thống kê mô tả một biến số.
+- mean(): trung bình
+- sd(): độ lệch chuẩn
+- var(): phương sai
+- cor(): ma trận hệ số tương quan của các biến
+- max(): giá trị lớn nhất
+- min(): giá trị nhỏ nhất
+- quantile(): ngũ phân vị
+
+Bên cạnh các hàm cơ bản, R còn hỗ trợ sẵn hàm gộp 6 thông số cơ bản phân tích biến số. Hàm summary() sẽ cho ra min, 1stQuar, median, mean, 3rdQuar, Max.
+
+### Tần số
+Đếm số lượng xuất hiện của từng giá trị
+```
+aggregate(data$payment_cat, list(data$payment_cat), 'frequency' = n())
+```
+
 ## Group
 ```
 sale.brand <- data %>% group_by(brand_name) %>% summarise(brand = sum(sale))
