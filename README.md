@@ -42,17 +42,17 @@ source <- rename(source, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'p
 source <- mutate(source, moth = month(date))
 source <- mutate(source, week = week(date))
 
-# Merge brand data
+# Merge branch data
 code <- c('1N101', '2B101-01', '2B101-02', '2N101', '2N101-01', '2N101-03', '2N101-04', '2N101-05', 
   '2N201', '2N202', '2N301', '2N302', '2T101', '2T102', '2T103')
 name <- c('Công ty', 'CN Hà Nội', 'CN Hà Nội', 'CN Hồ Chí Minh', 'CN Hồ Chí Minh', 'CN Hồ Chí Minh', 
   'CN Hồ Chí Minh', 'CN Hồ Chí Minh', 'CN Miền Đông', 'CN Vũng Tàu', 'CN Cần Thơ', 'CN Tiền Giang', 
   'CN Nha Trang', 'CN Đà Nẵng', 'CN Nghệ An')
-brand <- data.frame(code, name)
+branch <- data.frame(code, name)
 Or import from file
-brand <- read_excel("refer.xslx", "brand")
+branch <- read_excel("refer.xslx", "branch")
 
-source <- merge(source, brand, by = 'brand_code', all.x = TRUE)
+source <- merge(source, branch, by = 'branch_code', all.x = TRUE)
 ```
 
 ```
