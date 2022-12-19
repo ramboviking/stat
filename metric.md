@@ -17,7 +17,7 @@ Quy ước về các thông số đo lường dùng để phân tích kinh doanh
 Một số chỉ số khác
 - Extract: trích xuất dòng dữ liệu theo một điều kiện gì đó.
   - Extract 3 gam: trích dữ liệu 3 gam (OPC, OPC Bình Dương, HD2)
-  - Extract brand: trích dữ liệu theo một chi nhánh cụ thể
+  - Extract branch: trích dữ liệu theo một chi nhánh cụ thể
   - Extract medrep: trích dữ liệu theo một TDV cụ thể
 - Summarize: dữ liệu được gộp và trình bày dưới dạng bảng (gộp bằng cách tính tổng/ đếm/ trung bình hoặc một phép tính khác tương đương).
 - Chart: xuất dữ liệu dưới dạng biểu đồ.
@@ -54,6 +54,7 @@ Sản phẩm sẽ được phân thành 05 danh mục.
 - Launching category: sản phẩm mới tung ra thị trường không quá 5 năm (Tussiday, Air-sat...)
 - Potential category: sản phẩm tiềm năng có cơ hội phát triển trong tương lai (cồn xoa bóp, inberco...)
 - Traditional category: sản phẩm truyền thống của công ty, khó có cơ hội bức phá mà chỉ ở mức duy trì (cao sao vàng...)
+
 Chi tiết danh sách sản phẩm của từng danh mục thay đổi theo thời điểm. Một sản phẩm chỉ được phép ở trong 1 danh mục duy nhất tại 1 thời điểm. Một quy cách mới của một sản phẩm đang lưu hành thì phân nhóm theo sản phẩm đang lưu hành.
 
 ## Group
@@ -82,6 +83,7 @@ Sản phẩm sẽ được chia thành nhiều dạng khác nhau căn cứ trên
 - Thuốc
 - Thực phẩm
 - Thực phẩm chức năng
+
 Trong mỗi có thể sẽ bao gồm thêm các dạng con nữa. Tuy nhiên, khi nói đến dạng sản phẩm chỉ nên nhắc đến 1 cấp, nếu chia càng sâu thì càng dễ bị rối. Ví dụ, thuốc có thuốc hóa dược và thuốc dược liệu, thuốc cổ truyền; thực phẩm có thực phẩm thường và thực phẩm bổ sung; nguyên liệu làm thuốc có cồn nguyên liệu và vị thuốc y học cổ truyền...
 
 ## Product form
@@ -94,4 +96,5 @@ Dạng bào chế của sản phẩm rất đa dạng và chưa thống nhất c
 - Túi lọc
 - Phiến
 
-
+## Brand
+Nhãn hiệu/ thương hiệu sản phẩm. Mặc định khi nói đến sản phẩm (nhãn hiệu/ thương hiệu) là gộp mã các mặt hàng thuộc cùng 1 hiệu. Ví dụ HoAstex bao gồm HoAstex chai và gói; trancumin gồm trancumin dầu và trancumin thuốc mỡ.
