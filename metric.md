@@ -34,9 +34,50 @@ Khái niệm gam hàng được hiểu thống nhất như sau.
 - Gam QTSK: dự định các mã HH10 sẽ tách thành gam hàng riêng.
 
 ## Category
-Sản phẩm sẽ được phân thành các danh mục.
-- Sản phẩm chủ lực
-- Sản phẩm mục tiêu
-- Sản phẩm tiềm năng
-- Sản phẩm truyền thống
-Chi tiết danh sách sản phẩm của từng danh mục thay đổi theo thời gian.
+Sản phẩm sẽ được phân thành 05 danh mục.
+- Main category: sản phẩm chủ lực đóng góp doanh thu cao (ví dụ Kim tiền thảo, Dầu khuynh diệp...)
+- Focus category: sản phẩm mục tiêu cần tập trung phát triển kinh doanh (ví dụ fengshi, bổ thận âm...)
+- Launching category: sản phẩm mới tung ra thị trường không quá 5 năm (Tussiday, Air-sat...)
+- Potential category: sản phẩm tiềm năng có cơ hội phát triển trong tương lai (cồn xoa bóp, inberco...)
+- Traditional category: sản phẩm truyền thống của công ty, khó có cơ hội bức phá mà chỉ ở mức duy trì (cao sao vàng...)
+Chi tiết danh sách sản phẩm của từng danh mục thay đổi theo thời điểm. Một sản phẩm chỉ được phép ở trong 1 danh mục duy nhất tại 1 thời điểm. Một quy cách mới của một sản phẩm đang lưu hành thì phân nhóm theo sản phẩm đang lưu hành.
+
+## Group
+Sản phẩm được phân thành nhóm dựa trên phân nhóm điều trị.
+- Bổ dưỡng
+- Chống dị ứng
+- Chuyển hóa
+- Cơ xương khớp
+- Dùng ngoài
+- Điều kinh
+- Hạ sốt, giảm đau
+- Kháng sinh, kháng nấm
+- Nhóm khác
+- Nội tiết
+- Thần kinh
+- Tiết niệu
+- Tiêu hóa
+- Tim mạch
+- Vitamin
+
+## Type
+Sản phẩm sẽ được chia thành nhiều dạng khác nhau căn cứ trên dạng đăng ký sản phẩm.
+- Mỹ phẩm
+- Nguyên liệu làm thuốc
+- Trang thiết bị y tế
+- Thuốc
+- Thực phẩm
+- Thực phẩm chức năng
+Trong mỗi có thể sẽ bao gồm thêm các dạng con nữa. Tuy nhiên, khi nói đến dạng sản phẩm chỉ nên nhắc đến 1 cấp, nếu chia càng sâu thì càng dễ bị rối. Ví dụ, thuốc có thuốc hóa dược và thuốc dược liệu, thuốc cổ truyền; thực phẩm có thực phẩm thường và thực phẩm bổ sung; nguyên liệu làm thuốc có cồn nguyên liệu và vị thuốc y học cổ truyền...
+
+## Product form
+Dạng bào chế của sản phẩm rất đa dạng và chưa thống nhất cách ghi do lịch sử để lại. Do đó, để đơn giản thì gôm nhóm các dạng bào chế lại với nhau như sau:
+- Viên
+- Lỏng (Dung dịch/ hỗn dịch/ nhũ tương/ siro)
+- Thuốc bột/ thuốc cốm
+- Cao thuốc (cao lỏng, cao khô, cao đặc)
+- Gel/ mỡ/ kem
+- Túi lọc
+- Phiến
+
+
