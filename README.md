@@ -50,10 +50,11 @@ name <- c('Công ty', 'CN Hà Nội', 'CN Hà Nội', 'CN Hồ Chí Minh', 'CN H
   'CN Nha Trang', 'CN Đà Nẵng', 'CN Nghệ An')
 branch <- data.frame(code, name)
 Or import from file
-branch <- read_excel("refer.xslx", "branch")
+branch <- read_excel("Refer.xslx", "branch")
 
 source <- merge(source, branch, by = 'branch_code', all.x = TRUE)
 ```
+[Download Refer file tại đây.](https://docs.google.com/spreadsheets/d/16LjQ8uVkXLTo-fDVaRPkXC-zccALC38UUzlE42bkmLc/edit?usp=sharing)
 
 ```
 # Format row
