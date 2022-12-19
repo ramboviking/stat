@@ -65,6 +65,7 @@ data <- merge(data, brand, by = 'brand_code', all.x = TRUE)
 ```
 
 # Analysis
+Phân tích các chỉ số kinh doanh theo [quy ước tại đây](./metric.md)
 ## Phân tích mô tả
 ## Group
 ```
