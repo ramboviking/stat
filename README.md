@@ -101,6 +101,11 @@ Bên cạnh các hàm cơ bản, R còn hỗ trợ sẵn hàm gộp 6 thông s�
 P27   P84   P87
 12    56    78
 ```
+### Histogram
+```
+hist(data$sale)
+```
+![Histogram chart](https://cdn.datamentor.io/wp-content/uploads/2017/11/r-histogram.png)
 
 ## Group
 ```
