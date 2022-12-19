@@ -43,8 +43,9 @@ Khái niệm gam hàng được hiểu thống nhất như sau.
 - Gam HD2: bao gồm các sản phẩm xưởng Hóa Dược 2 sản xuất (mã TP07).
 - Gam OPC Bình Dương: bao gồm các sản phẩm của công ty OPC Bình Dương sản xuất (mã HH04).
 - Gam phiến: bao gồm các sản phẩm thuốc phiến/ vị dược liệu (mãTP08, TP09).
-- Gam TW25: bao gồm các sản phẩm của TW25 (mã HH25)
+- Gam TW25: bao gồm các sản phẩm của TW25 (mã HH25).
 - Gam QTSK: dự định các mã HH10 sẽ tách thành gam hàng riêng.
+- Gam gia công: công ty gia công theo đơn đặt hàng (mã TP01).
 
 ## Category
 Sản phẩm sẽ được phân thành 05 danh mục.
