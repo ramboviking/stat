@@ -34,6 +34,7 @@ Các thuật ngữ được sử dụng chung trong phân tích kinh doanh của
 - YOY (Year Over Year): tỷ lệ phần trăm cùng kỳ năm ngoái.
 - Growth: tỷ lệ tăng trưởng so với cùng kỳ, thể hiện bằng tỷ lệ phần trăm.
 - Proportion: tỷ trọng của từng phần so với tổng thể (tỷ trọng doanh thu miền Nam, tỷ trọng doanh thu CN HCM...)
+- Forecast: số liệu dự báo (thông thường được tô màu xám để phân biệt với số liệu thực trong cùng bảng dữ liệu)
 
 # Quy định
 ## Gam
