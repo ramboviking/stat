@@ -23,8 +23,10 @@ input <- rbin(input1, input2)
 
 # 2. Transform data
 ```
+source <- input
+
 # Rename input column
-input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'promotion' = 5, 'unit' = 6, 'quantity' = 7, 
+source <- rename(source, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'promotion' = 5, 'unit' = 6, 'quantity' = 7, 
   'raw_price' = 8, 'discount' = 9, 'price' = 10, 'before_tax' = 11, 'tax' = 12, 'sale' = 13, 'customer_code' = 14, 
   'customer_name' = 15, 'note' = 16, 'herbal_type' = 17, 'chem_type' = 18, 'rep_code' = 19, 'rep_name' = 20, 
   'discount_duration' = 21, 'debt_duration' = 22, 'promotion_code' = 23, 'province' = 33, 'district' = 34, 'ward' = 35, 
@@ -37,8 +39,8 @@ input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'pro
 
 ```
 # Add column
-data <- mutate(data, moth = month(date))
-data <- mutate(data, week = week(date))
+source <- mutate(source, moth = month(date))
+source <- mutate(source, week = week(date))
 
 # Merge brand data
 code <- c('1N101', '2B101-01', '2B101-02', '2N101', '2N101-01', '2N101-03', '2N101-04', '2N101-05', 
@@ -50,19 +52,19 @@ brand <- data.frame(code, name)
 Or import from file
 brand <- read_excel("refer.xslx", "brand")
 
-data <- merge(data, brand, by = 'brand_code', all.x = TRUE)
+source <- merge(source, brand, by = 'brand_code', all.x = TRUE)
 ```
 
 ```
 # Format row
-data$date <- as.Date(data$date)
+source$date <- as.Date(source$date)
 ```
 # 3. Select working data
 
 
 ```
 # Chọn các cột
-source <- select(input, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, 
+data <- select(source, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, 
   herbal_type, rep_code, rep_name, province, branch_code))
   
 Hoặc
@@ -72,11 +74,11 @@ data <- source $>$ select(date, code, name, customer, type, quantity, revenue, b
 ```
 # Chọn các dòng
 - Chọn 3 gam (OPC, HD2, OPC BD)
-data <- source %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06', code))
+data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06', code))
 - Chọn 4 gam (OPC, HD2, OPC BD, TW25)
-data <- source %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|HH25', code))
+data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|HH25', code))
 - Chọn 7 gam (OPC, HD2, OPC BD, TW25, thuốc phiến, QTSK, gia công)
-data <- source %>% filter(grepl('TP01|TP02|TP03|TP05|TP07|TP08|TP09|TP10|HH04|HH06|HH25', code))
+data <- data %>% filter(grepl('TP01|TP02|TP03|TP05|TP07|TP08|TP09|TP10|HH04|HH06|HH25', code))
 ```
 
 
