@@ -1,7 +1,12 @@
-Phân tích dữ liệu kinh doanh bằng phần mềm R.
+Phân tích dữ liệu kinh doanh bằng phần mềm R. Về cơ bản, việc phân tích sẽ trải qua năm bước như sau:
+1. Load: tải dữ liệu, tải thư viện, cài đặt môi trường
+2. Transform: chuyển đổi dữ liệu theo chuẩn của người phân tích. Bao gồm: đặt tên biến, xử lý na/ null, thêm cột phụ/ merge table, format data...
+3. Select working data: trích xuất dữ liệu phân tích
+4. Analyze: phân tích dữ liệu theo model đã xây dựng
+5. Export report: xuất báo cáo.
 
-# Get start
-Cài dặt môi trường, load dữ liệu
+# 1. Load
+Cài đặt môi trường, tải thư viện, load dữ liệu
 ```
 getwd()
 
@@ -13,7 +18,11 @@ input <- read_excel(input, "export.xlsx")
 
 # Append data frames with the same column
 input <- rbin(input1, input2)
+```
 
+
+# 2. Transform data
+```
 # rename input column
 input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'promotion' = 5, 'unit' = 6, 'quantity' = 7, 
   'raw_price' = 8, 'discount' = 9, 'price' = 10, 'before_tax' = 11, 'tax' = 12, 'sale' = 13, 'customer_code' = 14, 
@@ -28,9 +37,6 @@ input <- rename(input, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'pro
 source <- select(input, c(date, invoice, code, name, quantity, price, sale, customer_code, customer_name, 
   herbal_type, rep_code, rep_name, province, branch_code))
 ```
-
-
-# Clear data
 Loại bỏ các dòng, cột nằm ngoài phạm vi quan tâm, xử lý trường hợp dữ liệu rỗng
 
 ```
@@ -64,7 +70,7 @@ brand <- read_excel("refer.xslx", "brand")
 data <- merge(data, brand, by = 'brand_code', all.x = TRUE)
 ```
 
-# Analysis
+# 4. Analysis
 Phân tích các chỉ số kinh doanh theo [quy ước tại đây](./metric.md)
 ## Phân tích mô tả
 ## Group
@@ -89,7 +95,7 @@ sale.month$acc <- cumsum(sale.month$percent)
 
 ## Dự báo
 
-# Export
+# 5. Export
 Xuất kết quả phân tích ra file định dạng xlsx
 library(writexl)
 
