@@ -97,7 +97,9 @@ Bên cạnh các hàm cơ bản, R còn hỗ trợ sẵn hàm gộp 6 thông s�
 ### Tần số
 Đếm số lượng xuất hiện của từng giá trị
 ```
-aggregate(data$payment_cat, list(data$payment_cat), 'frequency' = n())
+> table(data$payment_cat)
+P27   P84   P87
+12    56    78
 ```
 
 ## Group
