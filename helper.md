@@ -7,7 +7,14 @@ Loại bỏ các sản phẩm xuất cho biếu tặng, các sản phẩm này n
 Nếu phân tích số lượng thì bắt buộc phải loại bỏ các dòng cho biếu tặng để tập trung vào hàng bán.
 ```
 remove.gift <- function(input) {
-input <- input %>% filter(payment_cat != 'P84' & payment_cat != 'P84C' & payment_cat != 'P84E' & payment_cat != 'P87' & payment_cat != 'P87E' | is.na(payment_cat))
+input <- input %>% 
+  filter(
+    payment_cat != 'P84' & 
+    payment_cat != 'P84C' & 
+    payment_cat != 'P84E' & 
+    payment_cat != 'P87' & 
+    payment_cat != 'P87E' | 
+    is.na(payment_cat))
 return(input)
 }
 ```
