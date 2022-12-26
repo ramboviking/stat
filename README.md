@@ -5,6 +5,7 @@ Phân tích dữ liệu kinh doanh bằng phần mềm R. Về cơ bản, việc
 4. Analyze: phân tích dữ liệu theo model đã xây dựng
 5. Export report: xuất báo cáo.
 
+[Xem sale data set](./dataset.md)
 # 1. Load
 Cài đặt môi trường, tải thư viện, load dữ liệu
 ```
