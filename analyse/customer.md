@@ -12,14 +12,15 @@ Customer
 ```
 analyse.customer <- function(data) {
 
-total <- data %>% summarise(count = n_distinct(customer_code))
-type <- data %>% group_by(herbal_type) %>% summarise(count = n_distinct(customer_code))
-province <- data %>% group_by(province) %>% summarise(count = n_distinct(customer_code))
-# region <- data %>% group_by(region) %>% summarise(count = n_distinct(customer_code))
-branch <- data %>% group_by(branch_code) %>% summarise(count = n_distinct(customer_code))
-month <- data %>% group_by(month) %>% summarise(count = n_distinct(customer_code))
+total <- data %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
+type <- data %>% group_by(herbal_type) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
+province <- data %>% group_by(province) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
+# region <- data %>% group_by(region) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
+branch <- data %>% group_by(branch_code) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
+month <- data %>% group_by(month) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
+sale <- data %>% group_by(customer_code) %>% summarise(sale = sum(sale))
 
-result <- list('Total' = Total, 'Type' = type, 'Branch' = branch, 'Month' = month)
+result <- list('Total' = total, 'Type' = type, 'Branch' = branch, 'Month' = month, 'Sale' = sale)
 return(result)
 }
 ```
