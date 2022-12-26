@@ -14,6 +14,8 @@ analyse.customer <- function(data) {
 
 total <- data %>% summarise(count = n_distinct(customer_code))
 type <- data %>% group_by(herbal_type) %>% summarise(count = n_distinct(customer_code))
+province <- data %>% group_by(province) %>% summarise(count = n_distinct(customer_code))
+# region <- data %>% group_by(region) %>% summarise(count = n_distinct(customer_code))
 branch <- data %>% group_by(branch_code) %>% summarise(count = n_distinct(customer_code))
 month <- data %>% group_by(month) %>% summarise(count = n_distinct(customer_code))
 
