@@ -20,6 +20,15 @@ return(input)
 }
 ```
 
+### Remove internal
+Loại bỏ các người mua hàng là nhân viên nội bộ công ty/ khách quan hệ không phát sinh giao dịch mua bán (ETC)
+```
+remove.internal(input) {
+input <- input %>% filter(grepl('OTC|ETC', customer_code))
+return(input)
+}
+```
+
 ### Remove export
 ### Remove outsource
 
