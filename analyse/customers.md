@@ -1,7 +1,7 @@
 # Analyse customer
 Phân tích khách hàng, chủ yếu là phân tích về số lượng khách hàng/ sale phân bố như thế nào trong từng tiêu chí.
 
-Customer
+## Customer
 - Tổng khách hàng giao dịch
 - Phân bố khách hàng trên từng kênh OTC/ ETC
 - Phân bố khách hàng theo vùng miền (7 vùng kinh tế)
@@ -25,3 +25,16 @@ result <- list('Total' = total, 'Type' = type, 'Branch' = branch, 'Month' = mont
 return(result)
 }
 ```
+
+## New customer
+Phân tích khách hàng mới
+
+```
+customer.new <- function(data, created) {
+new <- data %>% filter(customer_code %in% created)
+sale <- new %>% group_by(customer_code, herbal_type) %>% summarise(sale = sum(sale))
+return(sale)
+}
+
+```
+
