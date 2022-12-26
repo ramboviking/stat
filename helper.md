@@ -1,5 +1,5 @@
 # Hepler function
-Các hàm hepler giúp cho việc phân tích dữ liệu nhanh hơn
+Các hàm hepler giúp cho việc trích lọc dữ liệu nhanh hơn.
 
 ## Remove
 ### Remove gift
