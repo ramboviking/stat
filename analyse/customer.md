@@ -19,7 +19,7 @@ province <- data %>% group_by(province) %>% summarise(count = n_distinct(custome
 # region <- data %>% group_by(region) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
 branch <- data %>% group_by(branch_code) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
 month <- data %>% group_by(month) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
-sale <- data %>% group_by(customer_code) %>% summarise(sale = sum(sale))
+sale <- data %>% group_by(customer_code, herbal_type, province) %>% summarise(sale = sum(sale))
 
 result <- list('Total' = total, 'Type' = type, 'Branch' = branch, 'Month' = month, 'Sale' = sale)
 return(result)
