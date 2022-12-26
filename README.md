@@ -138,7 +138,7 @@ arrange(sale.month, desc(sale))
 Add cumulate column
 sale.month$acc <- cumsum(sale.month$percent)
 ```
-- [Phân tích mô tả khách hàng](./analyse/customer.md)
+- [Phân tích mô tả khách hàng](./analyse/customers.md)
 - [Phân tích mô tả sản phẩm](./analyse/products.md)
 ## 4.2 So sánh
 
