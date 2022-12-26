@@ -30,11 +30,14 @@ return(result)
 Phân tích khách hàng mới
 
 ```
+# data: sale data set
+# created: vector customer code
 customer.new <- function(data, created) {
 new <- data %>% filter(customer_code %in% created)
 sale <- new %>% group_by(customer_code, herbal_type) %>% summarise(sale = sum(sale))
 return(sale)
 }
 
+new <- customer.new(data, created$code)
 ```
 
