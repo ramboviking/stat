@@ -39,7 +39,7 @@ source <- rename(source, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'p
 
 ```
 # Add column
-source <- mutate(source, moth = month(date))
+source <- mutate(source, month = month(date))
 source <- mutate(source, week = week(date))
 
 # Merge branch data
