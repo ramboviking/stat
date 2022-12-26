@@ -85,7 +85,8 @@ data <- data %>% filter(grepl('TP01|TP02|TP03|TP05|TP07|TP08|TP09|TP10|HH04|HH06
 
 
 # 4. Analysis
-Phân tích các chỉ số kinh doanh theo [quy ước tại đây.](./metric.md)
+Phân tích các chỉ số kinh doanh theo [quy ước tại đây.](./metric.md).
+Sử dụng các hàm [hepler](./helper.md)
 
 ## 4.1 Phân tích mô tả
 Thống kê mô tả (Descriptive statistics) sử dụng các phép thống kê tóm tắt để mô tả đặc trưng của dữ liệu. Bao gồm:
