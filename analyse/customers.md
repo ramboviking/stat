@@ -11,7 +11,7 @@ Phân tích khách hàng, chủ yếu là phân tích về số lượng khách 
 - Phân bố theo tháng
 
 ```
-analyse.customer <- function(data) {
+stat.customer <- function(data) {
 
 total <- data %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
 type <- data %>% group_by(herbal_type) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
