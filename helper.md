@@ -56,6 +56,17 @@ extract.opc
 extract.hd2
 extract.opcbd
 extract.tw25
+
+# 3 gam: opc (kể cả QTSK), opcbd, hd2
+extract.3gam <- function(data) {
+data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10', code))
+}
+
+# 4 gam: opc, opcbd, hd2, tw25
+extract.4gam <- function(data) {
+data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10', code))
+data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10|HH25', code))
+}
 ```
 ### Extract theo product
 ```
