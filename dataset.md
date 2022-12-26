@@ -1,0 +1,37 @@
+# Data set
+Data set dùng để phân tích kết quả kinh doanh được trích xuất từ phần mềm quản lý.
+- date (dt): ngày tháng năm hóa đơn
+- invoice (text): số phiếu xuất
+- code (text): mã sản phẩm
+- name (text): tên sản phẩm
+- promotion (logic): có khuyến mãi hay không
+- unit (text): đơn vị tính
+- quantity (number): số lượng
+- raw_price (number): giá nguyên chưa thuế, chưa chiết khấu
+- discount (number): tỷ lệ phần trăm chiết khấu
+- price (number): giá bán xuất ra (sau chiết khấu)
+- sale (nubmer): tiền trước thuế
+- tax (number): tiền thuế
+- revenue (number): tiền sau thuế
+- customer_code (text): mã khách hàng
+- customer_name (text): tên khách hàng
+- note (text): ghi chú
+- herbal_type (text): loại khách hàng đông dược
+- chem_type (text): loại khách hàng tân dược
+- rep_code (text): mã trình dược viên
+- rep_name (text): tên trình dược viên
+- discount_duration (number): thời hạn chiết khấu thanh toán
+- debt_duration (number): thời hạn thanh toán
+- promotion_code (text): mã khuyến mãi
+- province (text): tỉnh
+- district (text): quận/ huyện
+- ward (text): xã/ phường
+- lot-exp (text): kết hợp số lô - hạn dùng
+- lot (text): số lô
+- address (text): địa chỉ
+- payment_cat (text): khoản mục thanh toán
+- tax_code (number): mã số thuế
+- contact (text): tên người liên hệ
+- branch_code (text): mã chi nhánh
+- bill_type (text) loại chứng từ
+- dept_code (text): mã nợ
