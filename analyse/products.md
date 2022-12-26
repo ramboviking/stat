@@ -10,7 +10,7 @@ Tải file phân loại sản phẩm [tại đây](https://docs.google.com/sprea
 - Form: dạng bào chế (viên hoàn cứng/ dung dịch...)
 
 ```
-analyse.products <- function(data, classify) {
+stat.products <- function(data, classify) {
 # gam
 # category
 # group
