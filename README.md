@@ -55,13 +55,15 @@ branch <- read_excel("Refer.xslx", "branch")
 
 source <- merge(source, branch, by = 'branch_code', all.x = TRUE)
 ```
-[Download Refer file tại đây.](https://docs.google.com/spreadsheets/d/16LjQ8uVkXLTo-fDVaRPkXC-zccALC38UUzlE42bkmLc/edit?usp=sharing)
-[Toàn bộ hàm makeup](./makeup.md)
 
 ```
 # Format row
 source$date <- as.Date(source$date)
 ```
+
+[Download Refer file tại đây.](https://docs.google.com/spreadsheets/d/16LjQ8uVkXLTo-fDVaRPkXC-zccALC38UUzlE42bkmLc/edit?usp=sharing)
+
+[Toàn bộ hàm makeup](./makeup.md)
 # 3. Select working data
 
 
