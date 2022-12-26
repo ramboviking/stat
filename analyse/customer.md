@@ -19,7 +19,7 @@ province <- data %>% group_by(province) %>% summarise(count = n_distinct(custome
 branch <- data %>% group_by(branch_code) %>% summarise(count = n_distinct(customer_code))
 month <- data %>% group_by(month) %>% summarise(count = n_distinct(customer_code))
 
-result <- list('total' = total, 'type' = type, 'branch' = branch, 'month' = month)
+result <- list('Total' = Total, 'Type' = type, 'Branch' = branch, 'Month' = month)
 return(result)
 }
 ```
