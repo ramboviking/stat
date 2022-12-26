@@ -6,7 +6,7 @@ Phân tích tổng quan tình hình kinh doanh của công ty.
 - Theo kênh bán hàng
 
 ```
-stat.overvie <- function(data) {
+stat.overview <- function(data) {
 total <- data %>% summarise(sale = sum(sale))
 branch <- data %>% group_by(branch_name) %>% summarise(sale = sum(sale))
 channel <- data %>% group_by(channel) %>% summarise(sale = sum(sale))
