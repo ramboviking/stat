@@ -1,5 +1,6 @@
 # Analyse customer
-Phân tích khách hàng, chủ yếu là phân tích về số lượng khách hàng phân bố như thế nào trong từng tiêu chí.
+Phân tích khách hàng, chủ yếu là phân tích về số lượng khách hàng/ sale phân bố như thế nào trong từng tiêu chí.
+
 Customer
 - Tổng khách hàng giao dịch
 - Phân bố khách hàng trên từng kênh OTC/ ETC
