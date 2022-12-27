@@ -79,9 +79,9 @@ data <- source $>$ select(date, code, name, customer, type, quantity, revenue, b
 ```
 # Chọn các dòng
 - Chọn 3 gam (OPC, HD2, OPC BD)
-data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06', code))
+data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10', code))
 - Chọn 4 gam (OPC, HD2, OPC BD, TW25)
-data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|HH25', code))
+data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10|HH25', code))
 - Chọn 7 gam (OPC, HD2, OPC BD, TW25, thuốc phiến, QTSK, gia công)
 data <- data %>% filter(grepl('TP01|TP02|TP03|TP05|TP07|TP08|TP09|TP10|HH04|HH06|HH25', code))
 ```
