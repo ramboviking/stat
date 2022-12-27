@@ -9,9 +9,13 @@ Phân tích tổng quan tình hình kinh doanh của công ty.
 stat.overview <- function(data) {
 total <- data %>% summarise(sale = sum(sale))
 branch <- data %>% group_by(branch_name) %>% summarise(sale = sum(sale))
+branch <- arrange(branch, desc(sale))
 channel <- data %>% group_by(channel) %>% summarise(sale = sum(sale))
+channel <- arrange(channel, desc(sale))
+province <- data %>% group_by(province) %>% summarise(sale = sum(sale))
+province <- arrange(province, desc(sale))
 
-result <- list('Total' = total, 'Branch' = branch, 'Channel' = channel)
+result <- list(total, branch, channel, province)
 return(result)
 }
 ```
