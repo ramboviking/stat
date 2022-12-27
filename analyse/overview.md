@@ -16,7 +16,7 @@ province <- data %>% group_by(province) %>% summarise(sale = sum(sale))
 province <- arrange(province, desc(sale))
 gam <- data %>% group_by(gam_code) %>% summarise(sale = sum(sale))
 
-result <- list(total, branch, channel, province, gam)
+result <- list('total' = total, 'branch' = branch, 'channel' = channel, 'province' = province, 'gam' = gam)
 return(result)
 }
 ```
