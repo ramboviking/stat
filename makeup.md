@@ -21,8 +21,10 @@ branch_name <- c('Công ty', 'CN Hà Nội', 'CN Hà Nội', 'CN Hồ Chí Minh'
 branch <- data.frame(branch_code, branch_name)
 data <- merge(data, branch, by = 'branch_code', all.x = TRUE)
 
-# Merge channel column
+# Add sub column
 channel <- substring(data$herbal_type, 1, 3)
 data$channel <- channel
+
+data$gam_code <- substring(data$herbal_type, 1, 4)
 }
 ```
