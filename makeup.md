@@ -25,6 +25,6 @@ data <- merge(data, branch, by = 'branch_code', all.x = TRUE)
 channel <- substring(data$herbal_type, 1, 3)
 data$channel <- channel
 
-data$gam_code <- substring(data$herbal_type, 1, 4)
+data$gam_code <- substring(data$code, 1, 4)
 }
 ```
