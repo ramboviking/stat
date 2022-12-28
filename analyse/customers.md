@@ -40,4 +40,18 @@ return(sale)
 
 new <- customer.new(data, created$code)
 ```
+## Customer by branch
+Thống kê khách hàng giao dịch theo chi nhánh (trên từng kênh)
 
+```
+customer.trans <- function(data){
+chem <- data %>% filter(is.na(herbal_type))
+herbal <- data %>% filter(!is.na(herbal_type))
+customer.chem <- chem %>% group_by(branch_name, chem_type) %>% summarise(count = n_distinct(customer_code))
+customer.chem$left <- substring(customer.chem$chem_type, 1, 3)
+customer.herbal <- herbal %>% group_by(branch_name, herbal_type) %>% summarise(count = n_distinct(customer_code))
+customer.herbal$left <- substring(customer.herbal$herbal_type, 1, 3)
+result <- list('herbal' = customer.herbal, 'chem' = customer.chem)
+return(result)
+}
+```
