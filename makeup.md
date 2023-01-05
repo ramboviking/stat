@@ -32,6 +32,8 @@ data$gam_code <- substring(data$code, 1, 4)
 
 # Format row
 data$date <- as.Date(data$date)
+
+return(data)
 }
 
 ```
