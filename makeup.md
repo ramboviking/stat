@@ -22,9 +22,16 @@ branch <- data.frame(branch_code, branch_name)
 data <- merge(data, branch, by = 'branch_code', all.x = TRUE)
 
 # Add sub column
+data <- mutate(data, month = month(date))
+data <- mutate(data, week = week(date))
+
 channel <- substring(data$herbal_type, 1, 3)
 data$channel <- channel
 
 data$gam_code <- substring(data$code, 1, 4)
+
+# Format row
+data$date <- as.Date(data$date)
 }
+
 ```
