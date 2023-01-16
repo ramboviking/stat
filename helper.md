@@ -32,7 +32,7 @@ return(input)
 Loại bỏ các người mua hàng là nhân viên nội bộ công ty/ khách quan hệ không phát sinh giao dịch mua bán (ETC). Thường dùng khi phân tích số lượng khách hàng.
 ```
 remove.internal <- function(input) {
-input <- input %>% filter(grepl('NV|OTC|ETC', customer_code))
+input <- input %>% filter(grepl('NV', customer_code))
 return(input)
 }
 ```
@@ -60,12 +60,14 @@ extract.tw25
 # 3 gam: opc (kể cả QTSK), opcbd, hd2
 extract.3gam <- function(data) {
 data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10', code))
+return(data)
 }
 
 # 4 gam: opc, opcbd, hd2, tw25
 extract.4gam <- function(data) {
 data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10', code))
 data <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10|HH25', code))
+return(data)
 }
 ```
 ### Extract theo product
