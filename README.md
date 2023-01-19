@@ -20,7 +20,11 @@ input <- read_excel(input, "export.xlsx")
 # Append data frames with the same column
 input <- rbind(input1, input2)
 ```
-
+Xem tài liệu về các packgage link bên dưới:
+1. [readxl](https://www.rdocumentation.org/packages/readxl/versions/0.1.1)
+2. [writexl](https://docs.ropensci.org/writexl/)
+3. [dplyr](https://dplyr.tidyverse.org/)
+4. [lubridate](https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html)
 
 # 2. Transform data
 ```
