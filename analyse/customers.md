@@ -60,7 +60,8 @@ customer.trans <- function(data){
 Thống kê khách hàng theo trình dược viên
 ```
 customer.medrep <- function(data){
-  medrep <- data %>% group_by(branch_name, medrep_code, medrep_name) %>% summarise(count = n_distinct(customer_code), sale = sum(sale))
+  medrep <- data %>% group_by(branch_name, medrep_code, medrep_name) %>% summarise(count = n_distinct(customer_code), 
+    sale = sum(sale))
   return(medrep)
 }
 ```
