@@ -155,7 +155,7 @@ library(writexl)
 
 ```
 # One sheet
-write_xlsx(result, 'output'xlsx')
+write_xlsx(result, 'output.xlsx')
 
 # Multiple sheet
 sheet <- list(sale.brand, sale.rep, sale.province)
