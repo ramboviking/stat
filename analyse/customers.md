@@ -44,7 +44,7 @@ new <- customer.new(data, created$code)
 Thống kê khách hàng giao dịch theo chi nhánh (trên từng kênh)
 
 ```
-customer.trans <- function(data){
+customer.trans <- function(data) {
   chem <- data %>% filter(is.na(herbal_type))
   herbal <- data %>% filter(!is.na(herbal_type))
   customer.chem <- chem %>% group_by(branch_name, chem_type) %>% summarise(count = n_distinct(customer_code))
@@ -59,7 +59,7 @@ customer.trans <- function(data){
 ## Customer by medrep
 Thống kê khách hàng theo trình dược viên
 ```
-customer.medrep <- function(data){
+customer.medrep <- function(data) {
   medrep <- data %>% group_by(branch_name, medrep_code, medrep_name) %>% summarise(count = n_distinct(customer_code), 
     sale = sum(sale))
   return(medrep)
