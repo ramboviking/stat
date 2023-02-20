@@ -15,7 +15,7 @@ library(readxl)
 library(writexl)
 library(dplyr)
 library(lubridate)
-input <- read_excel(input, "export.xlsx")
+input <- read_excel("export.xlsx")
 
 # Append data frames with the same column
 input <- rbind(input1, input2)
