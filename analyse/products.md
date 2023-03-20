@@ -22,9 +22,10 @@ stat.products <- function(data, classify) {
 
 ## Group product
 Phân tích theo nhóm sản phẩm
+### New product group
 ```
 # list.xlsx contain bravo code of new products
-analytics.new <- function(data) {
+stat.new_product <- function(data) {
 	new <- read_xlsx('list.xlsx')
 	data.new <- data %>% filter(code %in% new$bravo)
 	sale.product <- data.new %>% group_by(code, name) %>% summarise(count = sum(quantity), sale = sum(sale))
