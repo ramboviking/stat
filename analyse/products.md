@@ -8,15 +8,31 @@ Phân tích doanh số 1 sản phẩm (có thể bao gồm một/ một vài mã
 # bravo: mã hàng cần phân tích
 stat.product <- function(data, bravo) {
 	product <- data %>% filter(code %in% bravo)
+	product <- product %>% filter(promotion == false)
+	product <- product %>% 
+  		filter(
+    		payment_cat != 'P84' & 
+    		payment_cat != 'P84C' & 
+    		payment_cat != 'P84E' & 
+    		payment_cat != 'P87' & 
+    		payment_cat != 'P87E' | 
+    		is.na(payment_cat))
+		
 	sale.branch <- product %>% group_by(branch_name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.branch <- sale.branch %>% arrange(desc(sale))
+	sale.branch$percent <- sale.branch$sale / sum(sale.branch$sale) * 100
 	sale.channel <- product %>% group_by(channel) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.channel <- sale.channel %>% arrange(desc(sale))
+	sale.channel$percent <- sale.channel$sale / sum(sale.channel$sale) * 100
 	sale.rep <- product %>% group_by(branch_name, rep_code, rep_name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.rep <- sale.rep %>% arrange(branch_name, desc(sale))
+	sale.rep$percent <- sale.rep$sale / sum(sale.rep$sale) * 100
 	sale.province <- product %>% group_by(province) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.province <- sale.province %>% arrange(desc(sale))
+	sale.province$percent <- sale.province$sale / sum(sale.province$sale) * 100
 	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province)
+	file_name <- paste(bravo, '.xlsx', sep = '')
+	write_xlsx(sheet, file_name)
 	return(sheet)
 }
 ```
