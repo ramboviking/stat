@@ -18,6 +18,9 @@ stat.product <- function(data, bravo) {
     		payment_cat != 'P87E' | 
     		is.na(payment_cat))
 		
+	sale.product <- product %>% group_by(code, name) %>% summarise(count = sum(quantity), sale = sum(sale))
+	sale.product <- sale.product %>% arrange(desc(sale))
+	sale.product$percent <- sale.product$sale / sum(sale.product$sale) * 100
 	sale.branch <- product %>% group_by(branch_name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.branch <- sale.branch %>% arrange(desc(sale))
 	sale.branch$percent <- sale.branch$sale / sum(sale.branch$sale) * 100
@@ -30,7 +33,7 @@ stat.product <- function(data, bravo) {
 	sale.province <- product %>% group_by(province) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.province <- sale.province %>% arrange(desc(sale))
 	sale.province$percent <- sale.province$sale / sum(sale.province$sale) * 100
-	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province)
+	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province, 'product' = sale.product)
 	file_name <- paste(bravo, '.xlsx', sep = '')
 	write_xlsx(sheet, file_name)
 	return(sheet)
