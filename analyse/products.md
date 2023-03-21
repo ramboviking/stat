@@ -8,7 +8,7 @@ Phân tích doanh số 1 sản phẩm (có thể bao gồm một/ một vài mã
 # bravo: mã hàng cần phân tích
 stat.product <- function(data, bravo) {
 	product <- data %>% filter(code %in% bravo)
-	product <- product %>% filter(promotion == false)
+	product <- product %>% filter(promotion == FALSE)
 	product <- product %>% 
   		filter(
     		payment_cat != 'P84' & 
