@@ -6,8 +6,8 @@ Tải file phân loại sản phẩm [tại đây](https://docs.google.com/sprea
 Phân tích doanh số 1 sản phẩm (có thể bao gồm một/ một vài mã).
 ```
 # bravo: mã hàng cần phân tích
-stat.product(data, bravo) {
-	product <- data %>% fitler(code %in% bravo)
+stat.product <- function(data, bravo) {
+	product <- data %>% filter(code %in% bravo)
 	sale.branch <- product %>% group_by(branch_name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.branch <- sale.branch %>% arrange(desc(sale))
 	sale.channel <- product %>% group_by(channel) %>% summarise(count = sum(quantity), sale = sum(sale))
