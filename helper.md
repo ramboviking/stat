@@ -23,7 +23,7 @@ return(input)
 Loại các sản phẩm khuyến mãi, thích hợp khi phân tích số lượng bán.
 ```
 remove.promotion <- function(input) {
-input <- input %>% filter(promotion == false)
+input <- input %>% filter(promotion == FALSE)
 return(input)
 }
 ```
