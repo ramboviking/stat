@@ -24,15 +24,19 @@ stat.product <- function(data, bravo) {
 	sale.branch <- product %>% group_by(branch_name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.branch <- sale.branch %>% arrange(desc(sale))
 	sale.branch$percent <- sale.branch$sale / sum(sale.branch$sale) * 100
+	sale.branch$percent <- round(sale.branch$percent, digits = 2)
 	sale.channel <- product %>% group_by(channel) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.channel <- sale.channel %>% arrange(desc(sale))
 	sale.channel$percent <- sale.channel$sale / sum(sale.channel$sale) * 100
+	sale.channel$percent <- round(sale.channel$percent, digits = 2)
 	sale.rep <- product %>% group_by(branch_name, rep_code, rep_name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.rep <- sale.rep %>% arrange(branch_name, desc(sale))
 	sale.rep$percent <- sale.rep$sale / sum(sale.rep$sale) * 100
+	sale.rep$percent <- round(sale.rep$percent, digits = 2)
 	sale.province <- product %>% group_by(province) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.province <- sale.province %>% arrange(desc(sale))
 	sale.province$percent <- sale.province$sale / sum(sale.province$sale) * 100
+	sale.province$percent <- round(sale.province$percent, digits = 2)
 	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province, 'product' = sale.product)
 	file_name <- paste(bravo, '.xlsx', sep = '')
 	write_xlsx(sheet, file_name)
