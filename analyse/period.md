@@ -8,7 +8,7 @@ Ghi chú:
 ## Code
 
 ```
-stat.period <- function(this_period, pre_priod) {
+stat.period <- function(this_period, pre_period) {
 this_period <- this_period %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10|HH25', code))
 pre_period <- pre_period %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10|HH25', code))
 
@@ -58,7 +58,7 @@ province$growth <- round(province$growth, digits = 2)
 province <- province %>% arrange(desc(growth))
 
 sheet <- list('branch' = branch, 'channel' = channel, 'gam' = gam, 'product' = product, 'rep' = rep, 'province' = province)
-write_xlsx(sheet, 'week analytisc.xlsx')
+write_xlsx(sheet, 'period analytisc.xlsx')
 }
 ```
 
