@@ -74,7 +74,7 @@ source$date <- as.Date(source$date)
 ```
 # Chọn các cột
 data <- select(source, c(date, invoice, code, name, promotion, quantity, price, sale, customer_code, customer_name, 
-  herbal_type, rep_code, rep_name, province, payment_cat, branch_code, branch_name, month, week, channel))
+  herbal_type, rep_code, rep_name, province, payment_cat, branch_code, branch_name, month, week, channel, gam))
   
 Hoặc
 data <- source $>$ select(date, code, name, customer, type, quantity, revenue, branch)
