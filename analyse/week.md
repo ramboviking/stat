@@ -1,6 +1,8 @@
 # Week analytics
 Phân tích tình hình kinh doanh của một tuần, so sánh thực hiện với tuần trước đó.
 
+## Code
+
 ```
 stat.week <- function(this_week, pre_week) {
 this_week <- this_week %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10|HH25', code))
