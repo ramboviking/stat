@@ -29,6 +29,19 @@ channel <- substring(data$herbal_type, 1, 3)
 data$channel <- channel
 
 data$gam_code <- substring(data$code, 1, 4)
+data <- data %>% mutate(gam = 
+	case_when(substr(code,1,4) == 'TP02' ~ 'OPC',
+		substr(code,1,4) == 'TP03' ~ 'OPC',
+		substr(code,1,4) == 'TP05' ~ 'OPC',
+		substr(code,1,4) == 'TP07' ~ 'HD2',
+		substr(code,1,4) == 'TP08' ~ 'PHIEN',
+		substr(code,1,4) == 'TP09' ~ 'PHIEN',
+		substr(code,1,4) == 'TP10' ~ 'OPC',
+		substr(code,1,4) == 'HH04' ~ 'OPCBD',
+		substr(code,1,4) == 'HH06' ~ 'OPC',
+		substr(code,1,4) == 'HH25' ~ 'TW25'
+	)
+)
 
 # Format row
 data$date <- as.Date(data$date)
