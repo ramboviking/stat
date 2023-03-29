@@ -63,12 +63,12 @@ write_xlsx(sheet, 'week analytisc.xlsx')
 ```
 
 ## Use
-Do dataset đã có field 'week' thể hiện số tuần trong năm. Do đó, chỉ cần lọc dữ liệu của tuần cần phân tích và tuần liền trước
-đưa vào làm tham số cho function stat.week.
+Do dataset đã có field 'week', 'month' thể hiện số tuần, tháng trong năm. Do đó, chỉ cần lọc dữ liệu của tuần cần phân tích và tuần liền trước
+đưa vào làm tham số cho function stat.period.
 
 ```
 this_week <- data %>% filter(week == 12)
 pre_week <- data %>% filter(week == 11)
 
-week <- stat.week(this_week, pre_week)
+week <- stat.period(this_week, pre_week)
 ```
