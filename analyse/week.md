@@ -1,5 +1,8 @@
 # Week analytics
 Phân tích tình hình kinh doanh của một tuần, so sánh thực hiện với tuần trước đó.
+Ghi chú:
+- Tự động lọc lấy dữ liệu của 4 gam: OPC, OPC Bình Dương, Hóa Dược 2 và TW25.
+- Không loại bỏ các dữ liệu cho biếu tặng, khuyến mãi.
 
 ## Code
 
