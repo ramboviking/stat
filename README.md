@@ -149,6 +149,7 @@ sale.month$acc <- cumsum(sale.month$percent)
 - [Tổng quan những chỉ số cơ bản](./analyse/overview.md)
 - [Phân tích mô tả khách hàng](./analyse/customers.md)
 - [Phân tích mô tả sản phẩm](./analyse/products.md)
+- [Phân tích tuần](./analyse/week.md)
 ## 4.2 So sánh
 
 ## 4.3 Dự báo
