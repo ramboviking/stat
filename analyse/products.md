@@ -39,12 +39,15 @@ stat.product <- function(data, bravo) {
 	sale.province$percent <- round(sale.province$percent, digits = 2)
 	
 	sale.month <- product %>% group_by(month) %>% summarise(count = sum(quantity), sale = sum(sale))
-	sale.month <- sale.month %>% arrange(month)
 	sale.month$percent <- sale.month$sale / sum(sale.month$sale) * 100
 	sale.month$percent <- round(sale.month$percent, digits = 2)
 	
+	sale.week <- product %>% group_by(week) %>% summarise(count = sum(quantity), sale = sum(sale))
+	sale.week$percent <- sale.week$sale / sum(sale.week$sale) * 100
+	sale.week$percent <- round(sale.week$percent, digits = 2)
+	
 	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 
-		'province' = sale.province, 'month' = sale.month, 'product' = sale.product)
+		'province' = sale.province, 'month' = sale.month, 'week' = sale.week,'product' = sale.product)
 	file_name <- paste(bravo, '.xlsx', sep = '')
 	write_xlsx(sheet, file_name)
 	return(sheet)
