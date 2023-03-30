@@ -79,25 +79,34 @@ stat.new_product <- function(data) {
 	data.new <- data %>% filter(code %in% new$bravo)
 	sale.product <- data.new %>% group_by(code, name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	
-	format_sale <- function(frame) {
-		frame <- frame %>% arrange(desc(sale))
+	format_sale <- function(frame, desc = TRUE) {
+		if (desc) {frame <- frame %>% arrange(desc(sale))}
 		frame$rate <- frame$sale / sum(frame$sale) * 100
 		frame$rate <- round(frame$rate, digits = 2)
 		return(frame)
 	}
 	
 	sale.product <- format_sale(sale.product)
-	sale.branch <- data.new %>% group_by(branch_name) %>% summarise(count = sum(quantity), sale = sum(sale))
+	sale.branch <- data.new %>% group_by(branch_name) %>% summarise(sale = sum(sale))
 	sale.branch <- format_sale(sale.branch)
 	
-	sale.channel <- data.new %>% group_by(channel) %>% summarise(count = sum(quantity), sale = sum(sale))
+	sale.channel <- data.new %>% group_by(channel) %>% summarise(sale = sum(sale))
 	sale.channel <- format_sale(sale.channel)
 	
-	sale.rep <- data.new %>% group_by(branch_name, rep_code, rep_name) %>% summarise(count = sum(quantity), sale = sum(sale))
+	sale.rep <- data.new %>% group_by(branch_name, rep_code, rep_name) %>% summarise(sale = sum(sale))
 	sale.rep <- format_sale(sale.rep)
-	sale.province <- data.new %>% group_by(province) %>% summarise(count = sum(quantity), sale = sum(sale))
+	
+	sale.province <- data.new %>% group_by(province) %>% summarise(sale = sum(sale))
 	sale.province <- format_sale(sale.province)
-	sheet <- list('product' = sale.product, 'branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province)
+	
+	sale.month <- data.new %>% group_by(month) %>% summarise(sale = sum(sale))
+	sale.month <- format_sale(sale.month, desc = FALSE)
+	
+	sale.week <- data.new %>% group_by(week) %>% summarise(sale = sum(sale))
+	sale.week <- format_sale(sale.week, desc = FALSE)
+	
+	sheet <- list('product' = sale.product, 'branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province,
+		'month' = sale.month, 'week' = sale.week)
 	return(sheet)
 }
 ```
