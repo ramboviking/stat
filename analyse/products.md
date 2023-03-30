@@ -78,15 +78,25 @@ stat.new_product <- function(data) {
 	new <- read_xlsx('list.xlsx')
 	data.new <- data %>% filter(code %in% new$bravo)
 	sale.product <- data.new %>% group_by(code, name) %>% summarise(count = sum(quantity), sale = sum(sale))
-	sale.product <- sale.product %>% arrange(desc(sale))
+	
+	format_sale <- function(frame) {
+		frame <- frame %>% arrange(desc(sale))
+		frame$rate <- frame$sale / sum(frame$sale) * 100
+		frame$rate <- round(frame$rate, digits = 2)
+		return(frame)
+	}
+	
+	sale.product <- format_sale(sale.product)
 	sale.branch <- data.new %>% group_by(branch_name) %>% summarise(count = sum(quantity), sale = sum(sale))
-	sale.branch <- sale.branch %>% arrange(desc(sale))
+	sale.branch <- format_sale(sale.branch)
+	
 	sale.channel <- data.new %>% group_by(channel) %>% summarise(count = sum(quantity), sale = sum(sale))
-	sale.channel <- sale.channel %>% arrange(desc(sale))
+	sale.channel <- format_sale(sale.channel)
+	
 	sale.rep <- data.new %>% group_by(branch_name, rep_code, rep_name) %>% summarise(count = sum(quantity), sale = sum(sale))
-	sale.rep <- sale.rep %>% arrange(branch_name, desc(sale))
+	sale.rep <- format_sale(sale.rep)
 	sale.province <- data.new %>% group_by(province) %>% summarise(count = sum(quantity), sale = sum(sale))
-	sale.province <- sale.province %>% arrange(desc(sale))
+	sale.province <- format_sale(sale.province)
 	sheet <- list('product' = sale.product, 'branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province)
 	return(sheet)
 }
