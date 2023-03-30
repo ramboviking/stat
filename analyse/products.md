@@ -71,18 +71,30 @@ stat.products <- function(data, classify) {
 
 ## Group product
 Phân tích theo nhóm sản phẩm
-### New product group
+### New products group
 ```
 # list.xlsx contain bravo code of new products
 stat.new_product <- function(data) {
 	new <- read_xlsx('list.xlsx')
 	data.new <- data %>% filter(code %in% new$bravo)
+	data.3gam <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10', code))
+	data.4gam <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10|HH25', code))
+	
+	sale.new <- data.new %>% summarise(new = sum(sale))
+	sale.3gam <- data.3gam %>% summarise(sale_3gam = sum(sale))
+	sale.4gam <- data.4gam %>% summarise(sale_4gam = sum(sale))
+	total <- data.frame(sale.new, sale.3gam)
+	total$percent_3gam <- total$new / total$sale_3gam * 100
+	total$percent_3gam <- round(total$percent_3gam, digits = 2)
+	total <- data.frame(total, sale.4gam)
+	total$percent_4gam <- total$new / total$sale_4gam * 100
+	total$percent_4gam <- round(total$percent_4gam, digits = 2)
 	sale.product <- data.new %>% group_by(code, name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	
 	format_sale <- function(frame, desc = TRUE) {
 		if (desc) {frame <- frame %>% arrange(desc(sale))}
-		frame$rate <- frame$sale / sum(frame$sale) * 100
-		frame$rate <- round(frame$rate, digits = 2)
+		frame$percent <- frame$sale / sum(frame$sale) * 100
+		frame$percent <- round(frame$percent, digits = 2)
 		return(frame)
 	}
 	
@@ -105,7 +117,7 @@ stat.new_product <- function(data) {
 	sale.week <- data.new %>% group_by(week) %>% summarise(sale = sum(sale))
 	sale.week <- format_sale(sale.week, desc = FALSE)
 	
-	sheet <- list('product' = sale.product, 'branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province,
+	sheet <- list('total' = total, 'product' = sale.product, 'branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 'province' = sale.province,
 		'month' = sale.month, 'week' = sale.week)
 	return(sheet)
 }
