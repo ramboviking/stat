@@ -9,7 +9,7 @@ data <- rename(data, c('date' = 1, 'invoice' = 2, 'code' = 3, 'name' = 4, 'promo
   'customer_name' = 15, 'note' = 16, 'herbal_type' = 17, 'chem_type' = 18, 'rep_code' = 19, 'rep_name' = 20, 
   'discount_duration' = 21, 'debt_duration' = 22, 'promotion_code' = 23, 'province' = 33, 'district' = 34, 'ward' = 35, 
   'lot-exp' = 38,'lot' = 39, 'address' = 40, 'payment_cat' = 41, 'tax_code' = 42, 'contact' = 43, 'branch_code' = 44, 
-  'bill_type' = 45,'dept_code' = 46)
+  'bill_type' = 45,'dept_code' = 46, 'customer_type' = 50)
   )
   
 # Merge branch name column
