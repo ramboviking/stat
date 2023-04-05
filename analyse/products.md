@@ -6,8 +6,7 @@ Tải file phân loại sản phẩm [tại đây](https://docs.google.com/sprea
 Phân tích doanh số 1 sản phẩm (có thể bao gồm một/ một vài mã).
 ```
 # bravo: mã hàng cần phân tích
-stat.product <- function(data, bravo) {
-	product <- data %>% filter(code %in% bravo)
+stat.product <- function(product) {
 	product <- product %>% filter(promotion == FALSE)
 	product <- product %>% 
   		filter(
@@ -48,8 +47,6 @@ stat.product <- function(data, bravo) {
 	
 	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 
 		'province' = sale.province, 'month' = sale.month, 'week' = sale.week,'product' = sale.product)
-	file_name <- paste(bravo, '.xlsx', sep = '')
-	write_xlsx(sheet, file_name)
 	return(sheet)
 }
 ```
