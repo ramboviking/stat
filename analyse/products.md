@@ -20,6 +20,7 @@ stat.product <- function(product) {
 	sale.product <- product %>% group_by(code, name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.product <- sale.product %>% arrange(desc(sale))
 	sale.product$percent <- sale.product$sale / sum(sale.product$sale) * 100
+	sale.product$percent <- round(sale.product$percent, digits = 2)
 	sale.branch <- product %>% group_by(branch_name) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.branch <- sale.branch %>% arrange(desc(sale))
 	sale.branch$percent <- sale.branch$sale / sum(sale.branch$sale) * 100
