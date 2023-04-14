@@ -38,6 +38,11 @@ stat.product <- function(product) {
 	sale.province$percent <- sale.province$sale / sum(sale.province$sale) * 100
 	sale.province$percent <- round(sale.province$percent, digits = 2)
 	
+	sale.cus <- product %>% group_by(branch_name, customer_type, customer_name) %>% summarise(sale = sum(sale))
+	sale.cus <- sale.cus %>% arrange(desc(sale))
+	sale.cus$percent <- sale.cus$sale / sum(sale.cus$sale) * 100
+	sale.cus$percent <- round(sale.cus$percent, digits = 2)
+	
 	sale.month <- product %>% group_by(month) %>% summarise(count = sum(quantity), sale = sum(sale))
 	sale.month$percent <- sale.month$sale / sum(sale.month$sale) * 100
 	sale.month$percent <- round(sale.month$percent, digits = 2)
