@@ -78,8 +78,8 @@ stat.product <- function(product) {
 	sale.rep_type <- sale.rep_type %>% arrange(desc(sale.rep_type$total))
 	
 	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 
-		'province' = sale.province, 'month' = sale.month, 'week' = sale.week,'product' = sale.product,
-		'rep_channel' = sale.rep_channel, 'rep_type' = sale.rep_type)
+		'province' = sale.province, 'customer' = sale.cus, 'month' = sale.month, 'week' = sale.week,
+		'product' = sale.product, 'rep_channel' = sale.rep_channel, 'rep_type' = sale.rep_type)
 	return(sheet)
 }
 ```
