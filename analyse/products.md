@@ -59,9 +59,22 @@ stat.product <- function(product) {
 	sale.rep_channel$etc_percent <- round(sale.rep_channel$etc_percent, digits = 2)
 	sale.rep_channel <- sale.rep_channel %>% arrange(desc(total))
 	
+	wholesale <- product %>% filter(grepl('OTC0|OTC1|ETC0', customer_type))
+	sale.wholesale <- wholesale %>% group_by(rep_code) %>% summarise(wholesale = sum(sale))
+	retail <- product %>% filter(!grepl('OTC0|OTC1|ETC0', customer_type))
+	sale.retail <- retail %>% group_by(rep_code) %>% summarise(retail = sum(sale))
+
+	sale.rep_type <- merge(total, sale.wholesale, all.x = TRUE, sort = FALSE)
+	sale.rep_type <- merge(sale.rep_type, sale.retail, all.x = TRUE, sort = FALSE)
+	sale.rep_type$wholesale_percent <- (sale.rep_type$wholesale / sale.rep_type$total) * 100
+	sale.rep_type$wholesale_percent <- round(sale.rep_type$wholesale_percent, digits = 2)
+	sale.rep_type$retail_percent <- (sale.rep_type$retail / sale.rep_type$total) * 100
+	sale.rep_type$retail_percent <- round(sale.rep_type$retail_percent, digits = 2)
+	sale.rep_type <- sale.rep_type %>% arrange(desc(sale.rep_type$total))
+	
 	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 
 		'province' = sale.province, 'month' = sale.month, 'week' = sale.week,'product' = sale.product,
-		'rep_channel' = sale.rep_channel)
+		'rep_channel' = sale.rep_channel, 'rep_type' = sale.rep_type)
 	return(sheet)
 }
 ```
