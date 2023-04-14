@@ -46,6 +46,19 @@ stat.product <- function(product) {
 	sale.week$percent <- sale.week$sale / sum(sale.week$sale) * 100
 	sale.week$percent <- round(sale.week$percent, digits = 2)
 	
+	total <- product %>% group_by(branch_name, rep_code, rep_name) %>% summarise(total = sum(sale))
+	etc <- product %>% filter(channel == 'ETC')
+	sale.etc <- etc %>% group_by(rep_code) %>% summarise(etc = sum(sale))
+	otc <- data %>% filter(channel == 'OTC')
+	sale.otc <- otc %>% group_by(rep_code) %>% summarise(otc = sum(sale))
+	sale.rep_channel <- merge(total, sale.otc, by = 'rep_code')
+	sale.rep_channel <- merge(sale.rep_channel, sale.etc, by = 'rep_code')
+	sale.rep_channel$otc_percent <- (sale.rep_channel$otc / sale.rep_channel$total) * 100
+	sale.rep_channel$otc_percent <- round(sale.rep_channel$otc_percent, digits = 2)
+	sale.rep_channel$etc_percent <- (sale.rep_channel$etc / sale.rep_channel$total) * 100
+	sale.rep_channel$etc_percent <- round(sale.rep_channel$etc_percent, digits = 2)
+	sale.rep_channel <- sale.rep_channel %>% arrange(desc(total))
+	
 	sheet <- list('branch' = sale.branch, 'channel' = sale.channel, 'rep' = sale.rep, 
 		'province' = sale.province, 'month' = sale.month, 'week' = sale.week,'product' = sale.product)
 	return(sheet)
