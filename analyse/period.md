@@ -5,7 +5,7 @@ Ghi chú:
 - Tự động lọc lấy dữ liệu của 4 gam: OPC, OPC Bình Dương, Hóa Dược 2 và TW25.
 - Tùy chọn loại bỏ các dữ liệu cho biếu tặng, khuyến mãi (mặc định loại bỏ).
 
-## Code
+## Period
 
 ```
 stat.period <- function(this_period, pre_period, promotion = FALSE) {
@@ -92,4 +92,13 @@ this_week <- data %>% filter(week == 12)
 pre_week <- data %>% filter(week == 11)
 
 week <- stat.period(this_week, pre_week)
+```
+
+## Today
+Phân tích kết quả hoạt động ngày, thường dùng để phân tích cuối ngày hoặc đầu ngày hôm sau.
+```
+stat.today <- function(data) {
+  day = Sys.Date()
+  data.day <- data %>% filter(date == day)
+}
 ```
