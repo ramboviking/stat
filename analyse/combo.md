@@ -7,8 +7,11 @@ stat.combo <- function(data){
   bill <- data[!duplicated(data$invoice),]
   result.code <- bill %>% count(promotion_code)
   result.branch <- bill %>% count(branch_name)
-  result.group <- bill %>% group_by(branch_name) %>% count(promotion_code)
-  result <- list('code' = result.code, 'branch' = result.branch, 'group' = result.group)
+  result.medrep <- bill %>% count(rep_name)
+  result.branch_code <- bill %>% group_by(branch_name) %>% count(promotion_code)
+  result.branch_medrep <- bill %>% group_by(branch_name) %>% count(rep_name)
+  result <- list('code' = result.code, 'branch' = result.branch, 'medrep' = result.medrep,'branch_code' = result.branch_code,
+  'branch_medrep' = result.branch_medrep)
   return(result)
 }
 ```
