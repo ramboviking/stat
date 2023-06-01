@@ -109,6 +109,15 @@ Phân tích theo nhóm sản phẩm
 # list.xlsx contain bravo code of new products
 stat.new_product <- function(data) {
 	new <- read_xlsx('list.xlsx')
+	data <- data %>% filter(promotion == FALSE)
+	data <- data %>% 
+  		filter(
+    		payment_cat != 'P84' & 
+    		payment_cat != 'P84C' & 
+    		payment_cat != 'P84E' & 
+    		payment_cat != 'P87' & 
+    		payment_cat != 'P87E' | 
+    		is.na(payment_cat))
 	data.new <- data %>% filter(code %in% new$bravo)
 	data.3gam <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10', code))
 	data.4gam <- data %>% filter(grepl('TP02|TP03|TP05|TP07|HH04|HH06|TP10|HH25', code))
