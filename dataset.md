@@ -10,7 +10,7 @@ Data set dùng để phân tích kết quả kinh doanh được trích xuất t
 - raw_price (number): giá nguyên chưa thuế, chưa chiết khấu
 - discount (number): tỷ lệ phần trăm chiết khấu
 - price (number): giá bán xuất ra (sau chiết khấu)
-- sale (nubmer): tiền trước thuế
+- sale (number): tiền trước thuế
 - tax (number): tiền thuế
 - revenue (number): tiền sau thuế
 - customer_code (text): mã khách hàng
@@ -33,5 +33,5 @@ Data set dùng để phân tích kết quả kinh doanh được trích xuất t
 - tax_code (number): mã số thuế
 - contact (text): tên người liên hệ
 - branch_code (text): mã chi nhánh
-- bill_type (text) loại chứng từ
+- bill_type (text): loại chứng từ
 - dept_code (text): mã nợ
