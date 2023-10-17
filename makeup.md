@@ -30,7 +30,8 @@ data$channel <- channel
 
 data$gam_code <- substring(data$code, 1, 4)
 data <- data %>% mutate(gam = 
-	case_when(substr(code,1,4) == 'TP02' ~ 'OPC',
+	case_when(substr(code,1,4) == 'TP01' ~ 'OPC',
+		substr(code,1,4) == 'TP02' ~ 'OPC',
 		substr(code,1,4) == 'TP03' ~ 'OPC',
 		substr(code,1,4) == 'TP05' ~ 'OPC',
 		substr(code,1,4) == 'TP07' ~ 'HD2',
