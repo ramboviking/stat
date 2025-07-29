@@ -37,13 +37,18 @@ vec = c('TP Hà Nội' = 'Tây Bắc', 'Lai Châu' = 'Tây Bắc', 'Điện Biê
 'Lâm Ðồng' = 'Miền Trung', 'Đắk Nông' = 'Miền Trung', 'Bình Thuận' = 'Miền Trung', 'Đắk Lắk' = 'Miền Trung', 'Phú Yên' = 'Miền Trung', 'Khánh Hòa' = 'Miền Trung', 'Ninh Thuận' = 'Miền Trung', 'Gia Lai' = 'Miền Trung', 'Bình Định' = 'Miền Trung', 'Quảng Ngãi' = 'Miền Trung', 'Kon Tum' = 'Miền Trung', 'TP Đà Nẵng' = 'Miền Trung', 'Quảng Nam' = 'Miền Trung', 'Thừa Thiên-Huế' = 'Miền Trung', 'TP Huế' = 'Miền Trung', 'Quảng Trị' = 'Miền Trung', 'Quảng Bình' = 'Miền Trung',
 'TP Hồ Chí Minh' = 'Hồ Chí Minh', 'Bình Dương' = 'Hồ Chí Minh', 'Bà Rịa - Vũng Tàu' = 'Hồ Chí Minh', 'Ðồng Nai' = 'Hồ Chí Minh', 'Bình Phước' = 'Hồ Chí Minh',
 'Cần Thơ' = 'Mekong', 'Sóc Trăng' = 'Mekong', 'Hậu Giang' = 'Mekong', 'An Giang' = 'Mekong', 'Kiên Giang' = 'Mekong', 'Ðồng Tháp' = 'Mekong', 'Tiền Giang' = 'Mekong', 'Tây Ninh' = 'Mekong', 'Long An' = 'Mekong', 'Cà Mau' = 'Mekong', 'Bạc Liêu' = 'Mekong', 'Vĩnh Long' = 'Mekong', 'Bến Tre' = 'Mekong', 'Trà Vinh' = 'Mekong')
-before['regioin'] <- vec[before$state]
+before['region'] <- vec[before$state]
 ```
 ```
-source <- rbind(before, aftr)
+source <- rbind(before, after)
 ```
 Tạo cột `area`
 
 https://www.reddit.com/r/rstats/comments/1gmfh51/how_to_create_new_column_based_on_a_named_vector/
 ## Analyse
+sale.region <- function(data) {
+   region <- data %>% group_by(region) %>% summarise(sale = sum(value))
+   return(region)
+}
+region <- sale.region(source)
 ### By region
