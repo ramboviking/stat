@@ -44,6 +44,18 @@ source <- rbind(before, after)
 ```
 Tạo cột `area`
 
+area <- function(x) {
+   list = c('Lâm Ðồng' = 'Miền Trung 1', 'Đắk Nông' = 'Miền Trung 1', 'Bình Thuận' = 'Miền Trung 1', 'Đắk Lắk' = 'Miền Trung 1', 'Phú Yên' = 'Miền Trung 1',
+      'Khánh Hòa' = 'Miền Trung 2', 'Ninh Thuận' = 'Miền Trung 2', 'Gia Lai' = 'Miền Trung 2', 'Bình Định' = 'Miền Trung 2', 'Quảng Ngãi'       = 'Miền Trung 2', 'Kon Tum' = 'Miền Trung 2', 
+      'TP Đà Nẵng' = 'Miền Trung 3', 'Quảng Nam' = 'Miền Trung 3', 'Thừa Thiên-Huế' = 'Miền Trung 3', 'TP Huế' = 'Miền Trung 3', 'Quảng Trị' = 'Miền Trung 3', 'Quảng Bình' = 'Miền Trung 3')
+   if (x[2] == 'Miền Trung') {
+      return(list[x[1]])
+   } else {return('Other')}
+}
+new_col <- apply(source[, c('state', 'region')], MARGIN=1, area)
+source$area <- new_col
+
+
 https://www.reddit.com/r/rstats/comments/1gmfh51/how_to_create_new_column_based_on_a_named_vector/
 ## Analyse
 sale.region <- function(data) {
