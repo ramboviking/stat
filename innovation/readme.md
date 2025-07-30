@@ -36,7 +36,9 @@ vec = c('TP Hà Nội' = 'Tây Bắc', 'Lai Châu' = 'Tây Bắc', 'Điện Biê
 'Thanh Hóa' = 'Đông Bắc', 'Nghệ An' = 'Tây Bắc', 'Hà Tĩnh' = 'Tây Bắc', 'Hưng Yên' = 'Tây Bắc', 'Thái Bình' = 'Tây Bắc', 'Ninh Bình' = 'Tây Bắc', 'Hà Nam' = 'Tây Bắc', 'Nam Ðịnh' = 'Tây Bắc', 'TP Hải Phòng' = 'Tây Bắc', 'Hải Dương' = 'Tây Bắc',
 'Lâm Ðồng' = 'Miền Trung', 'Đắk Nông' = 'Miền Trung', 'Bình Thuận' = 'Miền Trung', 'Đắk Lắk' = 'Miền Trung', 'Phú Yên' = 'Miền Trung', 'Khánh Hòa' = 'Miền Trung', 'Ninh Thuận' = 'Miền Trung', 'Gia Lai' = 'Miền Trung', 'Bình Định' = 'Miền Trung', 'Quảng Ngãi' = 'Miền Trung', 'Kon Tum' = 'Miền Trung', 'TP Đà Nẵng' = 'Miền Trung', 'Quảng Nam' = 'Miền Trung', 'Thừa Thiên-Huế' = 'Miền Trung', 'TP Huế' = 'Miền Trung', 'Quảng Trị' = 'Miền Trung', 'Quảng Bình' = 'Miền Trung',
 'TP Hồ Chí Minh' = 'Hồ Chí Minh', 'Bình Dương' = 'Hồ Chí Minh', 'Bà Rịa - Vũng Tàu' = 'Hồ Chí Minh', 'Ðồng Nai' = 'Hồ Chí Minh', 'Bình Phước' = 'Hồ Chí Minh',
-'Cần Thơ' = 'Mekong', 'Sóc Trăng' = 'Mekong', 'Hậu Giang' = 'Mekong', 'An Giang' = 'Mekong', 'Kiên Giang' = 'Mekong', 'Ðồng Tháp' = 'Mekong', 'Tiền Giang' = 'Mekong', 'Tây Ninh' = 'Mekong', 'Long An' = 'Mekong', 'Cà Mau' = 'Mekong', 'Bạc Liêu' = 'Mekong', 'Vĩnh Long' = 'Mekong', 'Bến Tre' = 'Mekong', 'Trà Vinh' = 'Mekong')
+'Cần Thơ' = 'Mekong', 'Sóc Trăng' = 'Mekong', 'Hậu Giang' = 'Mekong', 'An Giang' = 'Mekong', 'Kiên Giang' = 'Mekong', 'Ðồng Tháp' = 'Mekong', 'Tiền Giang' = 'Mekong', 'Tây Ninh' = 'Mekong', 'Long An' = 'Mekong', 'Cà Mau' = 'Mekong', 'Bạc Liêu' = 'Mekong', 'Vĩnh Long' = 'Mekong', 'Bến Tre' = 'Mekong', 'Trà Vinh' = 'Mekong',
+'VN/Not assigned' = 'Công ty'
+)
 before['region'] <- vec[before$state]
 ```
 ```
@@ -44,6 +46,7 @@ source <- rbind(before, after)
 ```
 Tạo cột `area`
 
+```
 area <- function(x) {
    list = c('Lâm Ðồng' = 'Miền Trung 1', 'Đắk Nông' = 'Miền Trung 1', 'Bình Thuận' = 'Miền Trung 1', 'Đắk Lắk' = 'Miền Trung 1', 'Phú Yên' = 'Miền Trung 1',
       'Khánh Hòa' = 'Miền Trung 2', 'Ninh Thuận' = 'Miền Trung 2', 'Gia Lai' = 'Miền Trung 2', 'Bình Định' = 'Miền Trung 2', 'Quảng Ngãi'       = 'Miền Trung 2', 'Kon Tum' = 'Miền Trung 2', 
@@ -54,13 +57,22 @@ area <- function(x) {
 }
 new_col <- apply(source[, c('state', 'region')], MARGIN=1, area)
 source$area <- new_col
+```
 
-
+```
+company <- input %>% filter(grepl('OPC',sales_org))
+company <- company %>% filter(company_id == 'OPC')
+company$region <- 'Công ty'
+company$area <- 'Công ty'
+source <- bind_rows(source, company)
+```
 https://www.reddit.com/r/rstats/comments/1gmfh51/how_to_create_new_column_based_on_a_named_vector/
 ## Analyse
+```
 sale.region <- function(data) {
    region <- data %>% group_by(region) %>% summarise(sale = sum(value))
    return(region)
 }
 region <- sale.region(source)
+```
 ### By region
