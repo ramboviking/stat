@@ -1,4 +1,5 @@
 / call library
+```
 library(readxl)
 library(writexl)
 library(dplyr)
@@ -40,3 +41,4 @@ month <- t(month)
 product <- data %>% group_by(product_id, product_name, month) %>% summarise(sale = sum(sale))
 product <- setDT(product)
 dcast(product, product_id + product_name ~ month, value.var = 'sale')
+```
