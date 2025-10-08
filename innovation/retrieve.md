@@ -8,15 +8,15 @@ Hướng dẫn ký số trên trang dịch vụ công của Cục Quản lý dư
       A([Cắm USB token vào máy]) --> B[Đăng nhập vào website dichvucong];
     end
     subgraph Install Plugin
+      direction TB
       B --> C[Cài plugin];
     end
     subgraph Update .net framework
+      direction TB
       C --> D[Cập nhật .net framework];
     end
     subgraph Set up sign
+      direction TB
       D --> E[Cài đặt chữ ký số];
-    end
-    subgraph Sign
-      E --> F([Ký sô]);
     end
 ```
