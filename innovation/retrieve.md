@@ -3,7 +3,7 @@ Phân tích dữ liệu do IT kết xuất
 Hướng dẫn ký số trên trang dịch vụ công của Cục Quản lý dược
 ```mermaid
   graph LR
-    subgraph Login
+    subgraph Login TD
       A([Cắm USB token vào máy]) --> B[Đăng nhập vào website dichvucong];
     end
     subgraph Install Plugin
